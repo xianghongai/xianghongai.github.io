@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset 
-  
-  
-  
-  
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://xinlu.ink/tech/batch-in-action-13-export-high-quality-gif-pictures-from-video.html</loc>
-    <lastmod>2018-12-10T07:04:29.621Z</lastmod>
+    <lastmod>2018-12-18T04:14:34.229Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/batch-in-action-15-run-batch-at-folder-context-menu.html</loc>
+    <lastmod>2018-12-18T04:13:49.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/batch-in-action-1-preface.html</loc>
+    <lastmod>2018-12-18T03:59:34.966Z</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-2-getting-started.html</loc>
@@ -102,10 +106,6 @@
     <lastmod>2018-10-26T02:55:01.037Z</lastmod>
   </url>
   <url>
-    <loc>https://xinlu.ink/tech/batch-in-action-15-run-batch-at-folder-context-menu.html</loc>
-    <lastmod>2018-10-26T02:55:01.036Z</lastmod>
-  </url>
-  <url>
     <loc>https://xinlu.ink/tech/batch-in-action-14-delims.html</loc>
     <lastmod>2018-10-26T02:55:01.035Z</lastmod>
   </url>
@@ -120,9 +120,5 @@
   <url>
     <loc>https://xinlu.ink/tech/batch-in-action-10-multiple-audioclips.html</loc>
     <lastmod>2018-10-26T02:55:01.030Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/batch-in-action-1-preface.html</loc>
-    <lastmod>2018-10-26T02:55:01.029Z</lastmod>
   </url>
 </urlset>
