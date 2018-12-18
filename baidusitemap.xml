@@ -2,6 +2,18 @@
 <urlset 
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
+    <lastmod>2018-12-18T06:01:31.750Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/rime.html</loc>
+    <lastmod>2018-12-18T05:52:36.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/pro-web-reconstruction-11-css-pre-processors-and-declaration.html</loc>
+    <lastmod>2018-12-18T05:17:49.200Z</lastmod>
+  </url>
+  <url>
     <loc>https://xinlu.ink/tech/batch-in-action-13-export-high-quality-gif-pictures-from-video.html</loc>
     <lastmod>2018-12-18T04:14:34.229Z</lastmod>
   </url>
@@ -20,18 +32,6 @@
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-5-architecture.html</loc>
     <lastmod>2018-11-30T04:04:20.632Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/pro-web-reconstruction-11-css-pre-processors-and-declaration.html</loc>
-    <lastmod>2018-11-30T03:43:25.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/rime.html</loc>
-    <lastmod>2018-10-26T03:25:32.314Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
-    <lastmod>2018-10-26T02:55:01.059Z</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-9-grid-layout.html</loc>
