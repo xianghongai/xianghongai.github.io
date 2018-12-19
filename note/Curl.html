@@ -1,0 +1,216 @@
+<!DOCTYPE html><html><head><title>Curl</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em!important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em!important;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em!important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([for=preview]) .code-chunk .btn-group{display:none}.markdown-preview:not([for=preview]) .code-chunk .status{display:none}.markdown-preview:not([for=preview]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}.md-sidebar-toc{width:360px!important}.md-sidebar-toc li{white-space:nowrap}pre[data-info="css bad"],pre[data-info="html bad"],pre[data-info="javascript bad"]{border:1px solid rgba(128,128,128,.3);background-color:rgba(235,173,173,.28)}pre[data-info="css good"],pre[data-info="html good"],pre[data-info="javascript good"]{border:1px solid rgba(128,128,128,.3);background-color:rgba(173,235,173,.18)}.language-text{color:#666!important}</style></head><body for="html-export"><div class="mume markdown-preview"><h1 class="mume-header" id="curl">Curl</h1><p>&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x5DE5;&#x5177;</p><ul><li>&#x7F51;&#x9875;&#x6E90;&#x7801;: <code>$ curl www.sina.com</code></li><li>&#x7F51;&#x9875;&#x4FDD;&#x5B58;: <code>$ curl -o [&#x6587;&#x4EF6;&#x540D;] www.sina.com</code></li><li>&#x81EA;&#x52A8;&#x8DF3;&#x8F6C;: <code>$ curl -L www.sina.com</code></li><li>&#x663E;&#x793A;&#x5934;&#x4FE1;&#x606F;: <code>$ curl -i www.sina.com</code></li><li>&#x663E;&#x793A;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;: <code>$ curl -v www.sina.com</code></li><li>&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;: <code>$ curl --trace output.txt www.sina.com</code></li><li>&#x4FDD;&#x5B58;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;: <code>$ curl --trace-ascii output.txt www.sina.com</code></li><li>GET&#x65B9;&#x6CD5;&#x53D1;&#x9001;&#x8868;&#x5355;&#x4FE1;&#x606F;: <code>$ curl example.com/form.cgi?data=xxx</code></li><li>POST&#x65B9;&#x6CD5;&#x53D1;&#x9001;&#x8868;&#x5355;&#x4FE1;&#x606F;,&#x6570;&#x636E;&#x548C;&#x7F51;&#x5740;&#x5206;&#x5F00;,: <code>$ curl -X POST --data &quot;data=xxx&quot; example.com/form.cgi</code></li><li>&#x8868;&#x5355;&#x7F16;&#x7801;, : <code>$ curl -X POST--data-urlencode &quot;date=April 1&quot; example.com/form.cgi</code></li><li>HTTP&#x52A8;&#x8BCD;&#x9ED8;&#x8BA4;GET, <code>-X</code>&#x53C2;&#x6570;&#x652F;&#x6301;&#x5176;&#x4ED6;&#x52A8;&#x8BCD;: <code>$ curl -X POST www.example.com</code>,<code>$ curl -X DELETE www.example.com</code></li><li>&#x6587;&#x4EF6;&#x4E0A;&#x4F20;</li></ul><pre data-role="codeBlock" data-info="html" class="language-html">&#x3000;&#x3000;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>POST<span class="token punctuation">&quot;</span></span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&apos;</span>multipart/form-data<span class="token punctuation">&apos;</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>upload.cgi<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+&#x3000;&#x3000;&#x3000;&#x3000;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span>file</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>upload</span><span class="token punctuation">&gt;</span></span>
+&#x3000;&#x3000;&#x3000;&#x3000;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span>submit</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>press</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>OK<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+&#x3000;&#x3000;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</pre><p><code>$ curl --form upload=@localfilename --form press=OK [URL]</code></p><ul><li>&#x5728;<code>http request</code>&#x5934;&#x4FE1;&#x606F;&#x4E2D;&#x63D0;&#x4F9B;<code>referer</code>&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x4ECE;&#x54EA;&#x91CC;&#x8DF3;&#x8F6C;&#x8FC7;&#x6765;: <code>$ curl --referer http://www.example.com http://www.example.com</code></li><li><code>User Agent</code>&#x5B57;&#x6BB5;: <code>$ curl --user-agent &quot;[User Agent]&quot; [URL]</code></li><li><code>cookie</code>: <code>$ curl --cookie &quot;name=xxx&quot; www.example.com</code></li><li><code>-c cookie-file</code>&#x4FDD;&#x5B58;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;cookie&#x5230;&#x6587;&#x4EF6;: <code>$ curl -c cookies http://example.com</code></li><li><code>-b cookie-file</code>&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F5C;&#x4E3A;cookie&#x4FE1;&#x606F;&#xFF0C;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x7684;&#x8BF7;&#x6C42;: <code>$ curl -b cookies http://example.com</code></li><li>&#x589E;&#x52A0;&#x5934;&#x4FE1;&#x606F;: <code>$ curl --header &quot;Content-Type:application/json&quot; http://example.com</code></li><li>HTTP&#x8BA4;&#x8BC1;: <code>$ curl --user name:password example.com</code></li></ul><p>-<a href="http://www.ruanyifeng.com/blog/2011/09/curl.html">curl&#x7F51;&#x7AD9;&#x5F00;&#x53D1;&#x6307;&#x5357;</a><br> -<a href="http://t.cn/RplCL9p">&#x6559;&#x4F60;&#x5B78;&#x7528;CURL</a><br> -<a href="https://curl.haxx.se/docs/httpscripting.html">Using curl to automate HTTP jobs</a></p><h4 class="mume-header" id="%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB">&#x6269;&#x5C55;&#x9605;&#x8BFB;</h4><p>HTML <code>&lt;form&gt;</code> &#x6807;&#x7B7E;&#x7684; <code>enctype</code> &#x5C5E;&#x6027;</p><p><code>enctype</code>&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E86;&#x8868;&#x5355;&#x6570;&#x636E;&#x5728;&#x63D0;&#x4EA4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x65F6;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x7F16;&#x7801;&#x3002;</p><p><code>enctype</code>&#x5C5E;&#x6027;&#x53EA;&#x6709;&#x5728;<code>method=&quot;post&quot;</code>&#x65F6;&#x624D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x3002;</p><ul><li><code>application/x-www-form-urlencoded</code>, &#x9ED8;&#x8BA4;, &#x6240;&#x6709;&#x5B57;&#x7B26;&#x90FD;&#x5728;&#x53D1;&#x9001;&#x4E4B;&#x524D;&#x8FDB;&#x884C;&#x7F16;&#x7801;(&#x7A7A;&#x683C;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x201C;+&#x201D;&#x7B26;&#x53F7;&#xFF0C;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;ASCII&#x5341;&#x516D;&#x8FDB;&#x5236;&#x503C;)</li><li><code>multipart/form-data</code>, &#x6CA1;&#x6709;&#x7F16;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x3002;&#x4F7F;&#x7528;&#x5177;&#x6709;&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x63A7;&#x4EF6;&#x7684;&#x8868;&#x5355;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x503C;</li><li><code>text/plain</code>, &#x7A7A;&#x683C;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x201C;+&#x201D;&#x7B26;&#x53F7;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x88AB;&#x7F16;&#x7801;</li></ul><hr><h2 class="mume-header" id="curl-help">curl help</h2><pre data-role="codeBlock" data-info="" class="language-"><code>Usage: curl [options...] &lt;url&gt;
+     --abstract-unix-socket &lt;path&gt; Connect via abstract Unix domain socket
+     --anyauth       Pick any authentication method
+ -a, --append        Append to target file when uploading
+     --basic         Use HTTP Basic Authentication
+     --cacert &lt;CA certificate&gt; CA certificate to verify peer against
+     --capath &lt;dir&gt;  CA directory to verify peer against
+ -E, --cert &lt;certificate[:password]&gt; Client certificate file and password
+     --cert-status   Verify the status of the server certificate
+     --cert-type &lt;type&gt; Certificate file type (DER/PEM/ENG)
+     --ciphers &lt;list of ciphers&gt; SSL ciphers to use
+     --compressed    Request compressed response
+ -K, --config &lt;file&gt; Read config from a file
+     --connect-timeout &lt;seconds&gt; Maximum time allowed for connection
+     --connect-to &lt;HOST1:PORT1:HOST2:PORT2&gt; Connect to host
+ -C, --continue-at &lt;offset&gt; Resumed transfer offset
+ -b, --cookie &lt;data&gt; Send cookies from string/file
+ -c, --cookie-jar &lt;filename&gt; Write cookies to &lt;filename&gt; after operation
+     --create-dirs   Create necessary local directory hierarchy
+     --crlf          Convert LF to CRLF in upload
+     --crlfile &lt;file&gt; Get a CRL list in PEM format from the given file
+ -d, --data &lt;data&gt;   HTTP POST data
+     --data-ascii &lt;data&gt; HTTP POST ASCII data
+     --data-binary &lt;data&gt; HTTP POST binary data
+     --data-raw &lt;data&gt; HTTP POST data, &apos;@&apos; allowed
+     --data-urlencode &lt;data&gt; HTTP POST data url encoded
+     --delegation &lt;LEVEL&gt; GSS-API delegation permission
+     --digest        Use HTTP Digest Authentication
+ -q, --disable       Disable .curlrc
+     --disable-eprt  Inhibit using EPRT or LPRT
+     --disable-epsv  Inhibit using EPSV
+     --dns-interface &lt;interface&gt; Interface to use for DNS requests
+     --dns-ipv4-addr &lt;address&gt; IPv4 address to use for DNS requests
+     --dns-ipv6-addr &lt;address&gt; IPv6 address to use for DNS requests
+     --dns-servers &lt;addresses&gt; DNS server addrs to use
+ -D, --dump-header &lt;filename&gt; Write the received headers to &lt;filename&gt;
+     --egd-file &lt;file&gt; EGD socket path for random data
+     --engine &lt;name&gt; Crypto engine to use
+     --expect100-timeout &lt;seconds&gt; How long to wait for 100-continue
+ -f, --fail          Fail silently (no output at all) on HTTP errors
+     --fail-early    Fail on first transfer error, do not continue
+     --false-start   Enable TLS False Start
+ -F, --form &lt;name=content&gt; Specify HTTP multipart POST data
+     --form-string &lt;name=string&gt; Specify HTTP multipart POST data
+     --ftp-account &lt;data&gt; Account data string
+     --ftp-alternative-to-user &lt;command&gt; String to replace USER [name]
+     --ftp-create-dirs Create the remote dirs if not present
+     --ftp-method &lt;method&gt; Control CWD usage
+     --ftp-pasv      Use PASV/EPSV instead of PORT
+ -P, --ftp-port &lt;address&gt; Use PORT instead of PASV
+     --ftp-pret      Send PRET before PASV
+     --ftp-skip-pasv-ip Skip the IP address for PASV
+     --ftp-ssl-ccc   Send CCC after authenticating
+     --ftp-ssl-ccc-mode &lt;active/passive&gt; Set CCC mode
+     --ftp-ssl-control Require SSL/TLS for FTP login, clear for transfer
+ -G, --get           Put the post data in the URL and use GET
+ -g, --globoff       Disable URL sequences and ranges using {} and []
+ -I, --head          Show document info only
+ -H, --header &lt;header/@file&gt; Pass custom header(s) to server
+ -h, --help          This help text
+     --hostpubmd5 &lt;md5&gt; Acceptable MD5 hash of the host public key
+ -0, --http1.0       Use HTTP 1.0
+     --http1.1       Use HTTP 1.1
+     --http2         Use HTTP 2
+     --http2-prior-knowledge Use HTTP 2 without HTTP/1.1 Upgrade
+     --ignore-content-length Ignore the size of the remote resource
+ -i, --include       Include protocol response headers in the output
+ -k, --insecure      Allow insecure server connections when using SSL
+     --interface &lt;name&gt; Use network INTERFACE (or address)
+ -4, --ipv4          Resolve names to IPv4 addresses
+ -6, --ipv6          Resolve names to IPv6 addresses
+ -j, --junk-session-cookies Ignore session cookies read from file
+     --keepalive-time &lt;seconds&gt; Interval time for keepalive probes
+     --key &lt;key&gt;     Private key file name
+     --key-type &lt;type&gt; Private key file type (DER/PEM/ENG)
+     --krb &lt;level&gt;   Enable Kerberos with security &lt;level&gt;
+     --libcurl &lt;file&gt; Dump libcurl equivalent code of this command line
+     --limit-rate &lt;speed&gt; Limit transfer speed to RATE
+ -l, --list-only     List only mode
+     --local-port &lt;num/range&gt; Force use of RANGE for local port numbers
+ -L, --location      Follow redirects
+     --location-trusted Like --location, and send auth to other hosts
+     --login-options &lt;options&gt; Server login options
+     --mail-auth &lt;address&gt; Originator address of the original email
+     --mail-from &lt;address&gt; Mail from this address
+     --mail-rcpt &lt;address&gt; Mail from this address
+ -M, --manual        Display the full manual
+     --max-filesize &lt;bytes&gt; Maximum file size to download
+     --max-redirs &lt;num&gt; Maximum number of redirects allowed
+ -m, --max-time &lt;time&gt; Maximum time allowed for the transfer
+     --metalink      Process given URLs as metalink XML file
+     --negotiate     Use HTTP Negotiate (SPNEGO) authentication
+ -n, --netrc         Must read .netrc for user name and password
+     --netrc-file &lt;filename&gt; Specify FILE for netrc
+     --netrc-optional Use either .netrc or URL
+ -:, --next          Make next URL use its separate set of options
+     --no-alpn       Disable the ALPN TLS extension
+ -N, --no-buffer     Disable buffering of the output stream
+     --no-keepalive  Disable TCP keepalive on the connection
+     --no-npn        Disable the NPN TLS extension
+     --no-sessionid  Disable SSL session-ID reusing
+     --noproxy &lt;no-proxy-list&gt; List of hosts which do not use proxy
+     --ntlm          Use HTTP NTLM authentication
+     --ntlm-wb       Use HTTP NTLM authentication with winbind
+     --oauth2-bearer &lt;token&gt; OAuth 2 Bearer Token
+ -o, --output &lt;file&gt; Write to file instead of stdout
+     --pass &lt;phrase&gt; Pass phrase for the private key
+     --path-as-is    Do not squash .. sequences in URL path
+     --pinnedpubkey &lt;hashes&gt; FILE/HASHES Public key to verify peer against
+     --post301       Do not switch to GET after following a 301
+     --post302       Do not switch to GET after following a 302
+     --post303       Do not switch to GET after following a 303
+     --preproxy [protocol://]host[:port] Use this proxy first
+ -#, --progress-bar  Display transfer progress as a bar
+     --proto &lt;protocols&gt; Enable/disable PROTOCOLS
+     --proto-default &lt;protocol&gt; Use PROTOCOL for any URL missing a scheme
+     --proto-redir &lt;protocols&gt; Enable/disable PROTOCOLS on redirect
+ -x, --proxy [protocol://]host[:port] Use this proxy
+     --proxy-anyauth Pick any proxy authentication method
+     --proxy-basic   Use Basic authentication on the proxy
+     --proxy-cacert &lt;file&gt; CA certificate to verify peer against for proxy
+     --proxy-capath &lt;dir&gt; CA directory to verify peer against for proxy
+     --proxy-cert &lt;cert[:passwd]&gt; Set client certificate for proxy
+     --proxy-cert-type &lt;type&gt; Client certificate type for HTTS proxy
+     --proxy-ciphers &lt;list&gt; SSL ciphers to use for proxy
+     --proxy-crlfile &lt;file&gt; Set a CRL list for proxy
+     --proxy-digest  Use Digest authentication on the proxy
+     --proxy-header &lt;header/@file&gt; Pass custom header(s) to proxy
+     --proxy-insecure Do HTTPS proxy connections without verifying the proxy
+     --proxy-key &lt;key&gt; Private key for HTTPS proxy
+     --proxy-key-type &lt;type&gt; Private key file type for proxy
+     --proxy-negotiate Use HTTP Negotiate (SPNEGO) authentication on the proxy
+     --proxy-ntlm    Use NTLM authentication on the proxy
+     --proxy-pass &lt;phrase&gt; Pass phrase for the private key for HTTPS proxy
+     --proxy-service-name &lt;name&gt; SPNEGO proxy service name
+     --proxy-ssl-allow-beast Allow security flaw for interop for HTTPS proxy
+     --proxy-tlsauthtype &lt;type&gt; TLS authentication type for HTTPS proxy
+     --proxy-tlspassword &lt;string&gt; TLS password for HTTPS proxy
+     --proxy-tlsuser &lt;name&gt; TLS username for HTTPS proxy
+     --proxy-tlsv1   Use TLSv1 for HTTPS proxy
+ -U, --proxy-user &lt;user:password&gt; Proxy user and password
+     --proxy1.0 &lt;host[:port]&gt; Use HTTP/1.0 proxy on given port
+ -p, --proxytunnel   Operate through a HTTP proxy tunnel (using CONNECT)
+     --pubkey &lt;key&gt;  SSH Public key file name
+ -Q, --quote         Send command(s) to server before transfer
+     --random-file &lt;file&gt; File for reading random data from
+ -r, --range &lt;range&gt; Retrieve only the bytes within RANGE
+     --raw           Do HTTP &quot;raw&quot;; no transfer decoding
+ -e, --referer &lt;URL&gt; Referrer URL
+ -J, --remote-header-name Use the header-provided filename
+ -O, --remote-name   Write output to a file named as the remote file
+     --remote-name-all Use the remote file name for all URLs
+ -R, --remote-time   Set the remote file&apos;s time on the local output
+ -X, --request &lt;command&gt; Specify request command to use
+     --request-target Specify the target for this request
+     --resolve &lt;host:port:address&gt; Resolve the host+port to this address
+     --retry &lt;num&gt;   Retry request if transient problems occur
+     --retry-connrefused Retry on connection refused (use with --retry)
+     --retry-delay &lt;seconds&gt; Wait time between retries
+     --retry-max-time &lt;seconds&gt; Retry only within this period
+     --sasl-ir       Enable initial response in SASL authentication
+     --service-name &lt;name&gt; SPNEGO service name
+ -S, --show-error    Show error even when -s is used
+ -s, --silent        Silent mode
+     --socks4 &lt;host[:port]&gt; SOCKS4 proxy on given host + port
+     --socks4a &lt;host[:port]&gt; SOCKS4a proxy on given host + port
+     --socks5 &lt;host[:port]&gt; SOCKS5 proxy on given host + port
+     --socks5-basic  Enable username/password auth for SOCKS5 proxies
+     --socks5-gssapi Enable GSS-API auth for SOCKS5 proxies
+     --socks5-gssapi-nec Compatibility with NEC SOCKS5 server
+     --socks5-gssapi-service &lt;name&gt; SOCKS5 proxy service name for GSS-API
+     --socks5-hostname &lt;host[:port]&gt; SOCKS5 proxy, pass host name to proxy
+ -Y, --speed-limit &lt;speed&gt; Stop transfers slower than this
+ -y, --speed-time &lt;seconds&gt; Trigger &apos;speed-limit&apos; abort after this time
+     --ssl           Try SSL/TLS
+     --ssl-allow-beast Allow security flaw to improve interop
+     --ssl-no-revoke Disable cert revocation checks (WinSSL)
+     --ssl-reqd      Require SSL/TLS
+ -2, --sslv2         Use SSLv2
+ -3, --sslv3         Use SSLv3
+     --stderr        Where to redirect stderr
+     --suppress-connect-headers Suppress proxy CONNECT response headers
+     --tcp-fastopen  Use TCP Fast Open
+     --tcp-nodelay   Use the TCP_NODELAY option
+ -t, --telnet-option &lt;opt=val&gt; Set telnet option
+     --tftp-blksize &lt;value&gt; Set TFTP BLKSIZE option
+     --tftp-no-options Do not send any TFTP options
+ -z, --time-cond &lt;time&gt; Transfer based on a time condition
+     --tls-max &lt;VERSION&gt; Use TLSv1.0 or greater
+     --tlsauthtype &lt;type&gt; TLS authentication type
+     --tlspassword   TLS password
+     --tlsuser &lt;name&gt; TLS user name
+ -1, --tlsv1         Use TLSv1.0 or greater
+     --tlsv1.0       Use TLSv1.0
+     --tlsv1.1       Use TLSv1.1
+     --tlsv1.2       Use TLSv1.2
+     --tlsv1.3       Use TLSv1.3
+     --tr-encoding   Request compressed transfer encoding
+     --trace &lt;file&gt;  Write a debug trace to FILE
+     --trace-ascii &lt;file&gt; Like --trace, but without hex output
+     --trace-time    Add time stamps to trace/verbose output
+     --unix-socket &lt;path&gt; Connect through this Unix domain socket
+ -T, --upload-file &lt;file&gt; Transfer local FILE to destination
+     --url &lt;url&gt;     URL to work with
+ -B, --use-ascii     Use ASCII/text transfer
+ -u, --user &lt;user:password&gt; Server user and password
+ -A, --user-agent &lt;name&gt; Send User-Agent &lt;name&gt; to server
+ -v, --verbose       Make the operation more talkative
+ -V, --version       Show version number and quit
+ -w, --write-out &lt;format&gt; Use output FORMAT after completion
+     --xattr         Store metadata in extended file attributes
+</code></pre></div><div class="md-sidebar-toc"><ul><li><a href="#curl">Curl</a><br> * <a href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB">&#x6269;&#x5C55;&#x9605;&#x8BFB;</a><ul><li><a href="#curl-help">curl help</a></li></ul></li></ul></div> <a id="sidebar-toc-btn">&#x2261;</a><script>var sidebarTOCBtn=document.getElementById("sidebar-toc-btn");sidebarTOCBtn.addEventListener("click",function(t){t.stopPropagation(),document.body.hasAttribute("html-show-sidebar-toc")?document.body.removeAttribute("html-show-sidebar-toc"):document.body.setAttribute("html-show-sidebar-toc",!0)})</script></body></html>
