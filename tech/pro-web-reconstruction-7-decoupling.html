@@ -1,1 +1,254 @@
-<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><script type="text/javascript">!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject="ga",e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="//www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script"),ga("create","UA-118291798-1","auto"),ga("send","pageview")</script><title>Web重构笔记(7): 样式、结构、行为分离分割 | 心&amp;麓 - Xiang HongAi&#39;s Personal Website</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><link rel="icon" type="image/png" href="https://xinlu.ink/favicon.png"><link rel="shortcut icon" type="image/x-icon" href="https://xinlu.ink/favicon.ico"><link href="https://cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.min.css" rel="stylesheet"><script src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><meta name="description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。"><meta name="keywords" content="web"><meta property="og:type" content="article"><meta property="og:title" content="Web重构笔记(7): 样式、结构、行为分离分割"><meta property="og:url" content="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html"><meta property="og:site_name" content="心&amp;麓 - Xiang HongAi&#39;s Personal Website"><meta property="og:description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2018-10-26T02:55:01.056Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Web重构笔记(7): 样式、结构、行为分离分割"><meta name="twitter:description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。"><meta name="twitter:creator" content="@xianghongai"><link rel="icon" href="/favicon.png"><link href="/assets/iconfont/iconfont.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="/css/style.css"></head></html><body><div id="page"><header id="header"><div id="header-inner" class="row"><h1 id="logo-wrap"><a id="logo" href="https://xinlu.ink"><i class="iconfont icon-logo" title="Xiang HongAi's Personal Website"></i></a></h1><nav id="main-nav"><a id="main-nav-toggle" class="nav-icon"></a> <a class="main-nav-link" href="/">首页</a> <a class="main-nav-link" href="/categories/tech/">技术笔记</a></nav><nav id="sub-nav"><a id="nav-search-btn" class="nav-icon" title="依赖谷歌进行站内搜索"></a></nav><div id="search-form-wrap"><form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xinlu.ink"></form></div></div></header><div id="container"><main id="main" class="row"><article id="post-pro-web-reconstruction-7-decoupling" class="article article-type-post" itemscope="" itemprop="blogPost"><div class="article-inner"><header class="article-header"><h1 class="article-title" itemprop="name"> Web重构笔记(7): 样式、结构、行为分离分割</h1></header><div class="article-meta"><span class="article-date"><i class="iconfont icon-edit" title="文章写作时间"></i> 2015-07-17</span><span class="article-category"><i class="iconfont icon-category" title="归类"></i> <a class="article-category-link" href="/categories/tech/">tech</a></span></div><div class="article-entry" itemprop="articleBody"><p>Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。</p><p>分离分割皆为解耦。</p><p>分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互；</p><p>分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。</p><a id="more"></a><p>各业务各功能涉及到基础层、中间层、应用层呈现交互等技术环节，同时受制于工程需求、项目周期、角色协作等因素，分割粒度粗细要把控好，找到合适的平衡点。</p><p>模块化、组件化都是为了解耦和封装，把事务分割成小单元；</p><p>模块化侧重的是拆分、接口和功能；</p><p>组件化侧重的是重用、呈现和交互。</p><p>Web重构，不能通过文件的组织分布来谈模块化、组件化，要从OOP的角度去分析和实现，尤其是SPA开发，结构、样式、脚本文件组织不同于传统的Web开发方式，其侧重JavaScript在控制、驱动、交互方面的承载力，SPA中JavaScript决定一切。</p><h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>分离HTML、CSS、JavaScript，不限于文件方式隔离，以OOP思想作为指导。</p><p>不可在HTML结构标签上写行内样式，</p><p>不可在HTML结构标签上定义DOM0级事件，</p><p>不通过JavaScript在标签上操作 <code>style</code> 属性控制样式。</p><h4 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h4><p>在分离的基础上再各个进行分割。</p><p>HTML结构，分割成站点级和页面级主干结构、栅格结构、组件结构，</p><p>CSS结合预处理分割成Variables/变量、Mixins/混合、Utilities/辅助类(normalize, reset, visibility, position …)、Layout/布局(section/grid)、Components/组件(alert, popover, modal, dropdown, tooltip, accordion, tabs, slide, media …)、Pages/页面、Themes/主题等单元，</p><p>JavaScript根据选定的CommonJS、AMD、CMD、ES6等规范，并结合引入的框架和库定义模块和组件，分割成Common/通用、Components/组件、View/页面等单元，</p><h4 id="组合构建"><a href="#组合构建" class="headerlink" title="组合构建"></a>组合构建</h4><p>最后，使用<a href="http://gulpjs.com" target="_blank" rel="noopener">Gulp</a>、<a href="https://webpack.js.org/" target="_blank" rel="noopener">Webpack</a>、<a href="https://rollupjs.org/guide/en" target="_blank" rel="noopener">Rollup</a>、<a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a>等工具及相关插件组合模块和组件，打包构建成目标宿主环境支持的代码。</p><p>Web重构中的模块化、组件化实现，是对模块和组件的定义与加载管理。</p><p>（本篇结束）</p></div><div class="article-licenses"><p>许可协议：自由转载-保持署名-非商业性使用-禁止演绎 (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-NC-ND 4.0</a>)</p><p>By <a href="https://xinlu.ink">小可</a> from <a href="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html">https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html</a></p><p><i class="iconfont icon-creative_commons_licenses" title="知识共享许可协议"></i><i class="iconfont icon-Noncommercial" title="非商业性使用"></i><i class="iconfont icon-Attribution" title="保持署名"></i><i class="iconfont icon-No_Derivative_Works" title="禁止演绎"></i></p></div><footer class="article-footer"> <a data-url="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html" data-id="cjp3iggke0025187jzvw2nzk0" class="article-share-link">Share</a> <a href="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html#disqus_thread" class="article-comment-link">留言</a><ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul></footer></div><nav id="article-nav"> <a href="/tech/pro-web-reconstruction-8-tree-trunk.html" id="article-nav-newer" class="article-nav-link-wrap"><strong class="article-nav-caption">下一篇</strong><div class="article-nav-title"> Web重构笔记(8): 主干结构</div></a> <a href="/tech/pro-web-reconstruction-6-semantics.html" id="article-nav-older" class="article-nav-link-wrap"><strong class="article-nav-caption">上一篇</strong><div class="article-nav-title">Web重构笔记(6): 语义化</div></a></nav></article><section id="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></section></main></div><footer id="footer"><div id="footer-info" class="row"> &copy; 2019 <a href="mailto:xianghongai@gmail.com">心&amp;麓 - Xiang HongAi&#39;s Personal Website</a> <a class="my__github" href="https://github.com/xianghongai" target="_blank"><svg height="32" class="octicon octicon-mark-github" viewbox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div></footer></div><script>var disqus_shortname="xinlu",disqus_url="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html";!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script><script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="stylesheet" href="/fancybox/jquery.fancybox.css"><script src="/fancybox/jquery.fancybox.pack.js"></script><script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script><script id="leancloud">AV.init({appId:"hD9Ud7P3imssNuS9bQ3yR8Nw-gzGzoHsz",appKey:"ogVSezRAFR9Br6RTBx3TTW7n"})</script><script src="/js/script.js"></script><nav id="mobile-nav"> <a href="/" class="mobile-nav-link">首页</a> <a href="/categories/tech/" class="mobile-nav-link">技术笔记</a></nav><div class="page-pendant"><i class="iconfont icon-top js_top hidden" title="返回顶部"></i></div></body>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-118291798-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Web重构笔记(7): 样式、结构、行为分离分割 | 心&amp;麓 - Xiang HongAi&#39;s Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="icon" type="image/png" href="https://xinlu.ink/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="https://xinlu.ink/favicon.ico">
+  <link href="https://cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <meta name="description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web重构笔记(7): 样式、结构、行为分离分割">
+<meta property="og:url" content="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html">
+<meta property="og:site_name" content="心&amp;麓 - Xiang HongAi&#39;s Personal Website">
+<meta property="og:description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-26T02:55:01.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web重构笔记(7): 样式、结构、行为分离分割">
+<meta name="twitter:description" content="Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。 分离分割皆为解耦。 分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互； 分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。">
+<meta name="twitter:creator" content="@xianghongai">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  
+  <link href="/assets/iconfont/iconfont.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="page">
+    <header id="header">
+  <div id="header-inner" class="row">
+    <h1 id="logo-wrap">
+      <a id="logo" href="https://xinlu.ink"> <i class="iconfont icon-logo" title="Xiang HongAi's Personal Website"></i> </a>
+    </h1>
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      
+        <a class="main-nav-link" href="/">
+          首页
+        </a>
+        
+        <a class="main-nav-link" href="/categories/tech/">
+          技术笔记
+        </a>
+        
+    </nav>
+    <nav id="sub-nav">
+      
+          <a id="nav-search-btn" class="nav-icon" title="依赖谷歌进行站内搜索"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xinlu.ink"></form>
+    </div>
+    <!-- <div id="header-search">
+      <form id="search-form">
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off"
+          autocorrect="off" />
+        <i class="fa fa-times" onclick="resetSearch()"></i>
+      </form>
+      <div id="local-search-result"></div>
+      <p class='no-result'>No results found </p>
+    </div> -->
+  </div>
+</header>
+    <div id="container">
+      <main id="main" class="row"><article id="post-pro-web-reconstruction-7-decoupling" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Web重构笔记(7): 样式、结构、行为分离分割
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <span class="article-date"><i class="iconfont icon-edit" title="文章写作时间"></i> 2015-07-17</span>
+<!-- <a href="/tech/pro-web-reconstruction-7-decoupling.html" class="article-date"> <time datetime="2015-07-17T12:16:18.000Z" itemprop="datePublished"></time> </a> -->
+      
+  <span class="article-category">
+    <i class="iconfont icon-category" title="归类"></i>
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Web重构工作主要是语义化排版文档信息，排版文档信息的最佳实现就是基于OOP分离分割结构、样式、行为。</p>
+<p>分离分割皆为解耦。</p>
+<p>分离，使HTML、CSS、JavaScript三基石职责清晰，HTML逻辑化内容，CSS视觉呈现，JavaScript承载控制、驱动、交互；</p>
+<p>分割就是模块化、组件化，对系统各业务各功能按一定粒度进行分割、解耦、独立处理，减少冗余，提升可靠性、统一性、复用性、扩展性、维护性。</p>
+<a id="more"></a>
+<p>各业务各功能涉及到基础层、中间层、应用层呈现交互等技术环节，同时受制于工程需求、项目周期、角色协作等因素，分割粒度粗细要把控好，找到合适的平衡点。</p>
+<p>模块化、组件化都是为了解耦和封装，把事务分割成小单元；</p>
+<p>模块化侧重的是拆分、接口和功能；</p>
+<p>组件化侧重的是重用、呈现和交互。</p>
+<p>Web重构，不能通过文件的组织分布来谈模块化、组件化，要从OOP的角度去分析和实现，尤其是SPA开发，结构、样式、脚本文件组织不同于传统的Web开发方式，其侧重JavaScript在控制、驱动、交互方面的承载力，SPA中JavaScript决定一切。</p>
+<h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>分离HTML、CSS、JavaScript，不限于文件方式隔离，以OOP思想作为指导。</p>
+<p>不可在HTML结构标签上写行内样式，</p>
+<p>不可在HTML结构标签上定义DOM0级事件，</p>
+<p>不通过JavaScript在标签上操作 <code>style</code> 属性控制样式。</p>
+<h4 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h4><p>在分离的基础上再各个进行分割。</p>
+<p>HTML结构，分割成站点级和页面级主干结构、栅格结构、组件结构，</p>
+<p>CSS结合预处理分割成Variables/变量、Mixins/混合、Utilities/辅助类(normalize, reset, visibility, position …)、Layout/布局(section/grid)、Components/组件(alert, popover, modal, dropdown, tooltip, accordion, tabs, slide, media …)、Pages/页面、Themes/主题等单元，</p>
+<p>JavaScript根据选定的CommonJS、AMD、CMD、ES6等规范，并结合引入的框架和库定义模块和组件，分割成Common/通用、Components/组件、View/页面等单元，</p>
+<h4 id="组合构建"><a href="#组合构建" class="headerlink" title="组合构建"></a>组合构建</h4><p>最后，使用<a href="http://gulpjs.com" target="_blank" rel="noopener">Gulp</a>、<a href="https://webpack.js.org/" target="_blank" rel="noopener">Webpack</a>、<a href="https://rollupjs.org/guide/en" target="_blank" rel="noopener">Rollup</a>、<a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a>等工具及相关插件组合模块和组件，打包构建成目标宿主环境支持的代码。</p>
+<p>Web重构中的模块化、组件化实现，是对模块和组件的定义与加载管理。</p>
+
+        <p>（本篇结束）</p>
+      
+    </div>
+    
+        <div class="article-licenses">
+    <p>许可协议：自由转载-保持署名-非商业性使用-禁止演绎  (<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-NC-ND 4.0</a>)</p>
+    <p>By <a href="https://xinlu.ink">小可</a> from <a href="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html">https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html</a></p>
+    <p>
+      <i class="iconfont icon-creative_commons_licenses" title="知识共享许可协议"></i>
+      <i class="iconfont icon-Noncommercial" title="非商业性使用"></i>
+      <i class="iconfont icon-Attribution" title="保持署名"></i>
+      <i class="iconfont icon-No_Derivative_Works" title="禁止演绎"></i>
+    </p>
+  </div>
+
+    
+    <footer class="article-footer">
+      <a data-url="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html" data-id="cjrblzffm0025s4xok013q8x9" class="article-share-link">Share</a>
+      
+        <a href="https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tech/pro-web-reconstruction-8-tree-trunk.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Web重构笔记(8): 主干结构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/tech/pro-web-reconstruction-6-semantics.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Web重构笔记(6): 语义化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</main>
+    </div>
+    <footer id="footer">
+  
+  <div id="footer-info" class="row">
+    &copy; 2019 <a href="mailto:xianghongai@gmail.com">心&amp;麓 - Xiang HongAi&#39;s Personal Website</a>
+
+    <a class="my__github" href="https://github.com/xianghongai" target="_blank"><svg height="32" class="octicon octicon-mark-github" viewbox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+
+  </div>
+</footer>
+  </div>
+  
+<script>
+  var disqus_shortname = 'xinlu';
+  
+  var disqus_url = 'https://xinlu.ink/tech/pro-web-reconstruction-7-decoupling.html';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "hD9Ud7P3imssNuS9bQ3yR8Nw-gzGzoHsz",
+      appKey: "ogVSezRAFR9Br6RTBx3TTW7n"
+    });
+  </script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/tech/" class="mobile-nav-link">技术笔记</a>
+  
+</nav>
+  <div class="page-pendant">
+  <i class="iconfont icon-top js_top hidden" title="返回顶部"></i>
+</div>
+</body>
+</html>
