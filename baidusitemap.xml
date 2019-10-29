@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset 
-  
-  
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://xinlu.ink/tech/rime.html</loc>
+    <lastmod>2019-10-29T02:34:22.704Z</lastmod>
+  </url>
   <url>
     <loc>https://xinlu.ink/tech/editor.html</loc>
     <lastmod>2019-01-25T05:35:33.839Z</lastmod>
@@ -14,10 +16,6 @@
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
     <lastmod>2018-12-18T06:01:31.750Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/rime.html</loc>
-    <lastmod>2018-12-18T05:52:36.276Z</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-11-css-pre-processors-and-declaration.html</loc>
