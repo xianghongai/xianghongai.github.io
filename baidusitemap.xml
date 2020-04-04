@@ -2,6 +2,14 @@
 <urlset 
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
+    <lastmod>2020-04-04</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/batch-in-action.html</loc>
+    <lastmod>2020-04-04</lastmod>
+  </url>
+  <url>
     <loc>https://xinlu.ink/tech/rime.html</loc>
     <lastmod>2019-10-29</lastmod>
   </url>
@@ -12,10 +20,6 @@
   <url>
     <loc>https://xinlu.ink/tech/adobe-xd.html</loc>
     <lastmod>2019-01-03</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
-    <lastmod>2018-12-18</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-11-css-pre-processors-and-declaration.html</loc>
@@ -75,10 +79,6 @@
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-1-preface.html</loc>
-    <lastmod>2018-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/batch-in-action.html</loc>
     <lastmod>2018-10-26</lastmod>
   </url>
   <url>

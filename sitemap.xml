@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset 
-  
-  
-  
-  
-  
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
+    <lastmod>2020-04-04T06:00:56.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://xinlu.ink/tech/batch-in-action.html</loc>
+    <lastmod>2020-04-04T05:39:20.411Z</lastmod>
+  </url>
   <url>
     <loc>https://xinlu.ink/tech/rime.html</loc>
     <lastmod>2019-10-29T02:34:22.704Z</lastmod>
@@ -17,10 +20,6 @@
   <url>
     <loc>https://xinlu.ink/tech/adobe-xd.html</loc>
     <lastmod>2019-01-03T08:21:52.791Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/pro-web-reconstruction.html</loc>
-    <lastmod>2018-12-18T06:01:31.750Z</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-11-css-pre-processors-and-declaration.html</loc>
@@ -81,10 +80,6 @@
   <url>
     <loc>https://xinlu.ink/tech/pro-web-reconstruction-1-preface.html</loc>
     <lastmod>2018-10-26T02:55:01.046Z</lastmod>
-  </url>
-  <url>
-    <loc>https://xinlu.ink/tech/batch-in-action.html</loc>
-    <lastmod>2018-10-26T02:55:01.045Z</lastmod>
   </url>
   <url>
     <loc>https://xinlu.ink/tech/batch-in-action-9-extract-files-from-subfolders-into-the-main-folder.html</loc>
