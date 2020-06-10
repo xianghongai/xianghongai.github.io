@@ -352,6 +352,7 @@ $ <span class="token function">git</span> config --local credential.helper <span
 <span class="token function">git</span> branch <span class="token operator">&lt;</span>new-branch<span class="token operator">&gt;</span>
 
 <span class="token comment"># &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#xFF0C;&#x5E76;&#x5207;&#x6362;&#x5230;&#x8BE5;&#x5206;&#x652F;</span>
+<span class="token comment"># `checkout` &#x5DF2;&#x88AB; `restore` &#x548C; `switch` &#x66FF;&#x4EE3;&#x3002;(&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x3001;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x7ED9;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x3001;&#x5DE5;&#x4F5C;&#x548C;&#x751F;&#x6D3B;&#x7684;&#x6307;&#x5BFC;&#x610F;&#x4E49;&#x5C31;&#x662F;&#xFF1A;&apos;&#x529F;&#x80FD;&apos;&#x8981;&#x4E13;&#x4E00;)</span>
 <span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>new-branch<span class="token operator">&gt;</span>
 
 <span class="token comment"># &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#xFF0C;&#x6307;&#x5411;&#x6307;&#x5B9A;commit</span>
@@ -1005,7 +1006,7 @@ Actions:
     -N, --intent-to-add   record only the fact that removed paths will be added later
     -z                    EXPERIMENTAL: paths are separated with NUL character
     --stdin               EXPERIMENTAL: <span class="token function">read</span> paths from <span class="token operator">&lt;</span>stdin<span class="token operator">&gt;</span>
-</pre><hr><h3>git checkout</h3><p><code>checkout</code> &#x5DF2;&#x88AB; <code>restore</code> &#x548C; <code>switch</code> &#x66FF;&#x4EE3;&#x3002;(&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x3001;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x7ED9;&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x3001;&#x5DE5;&#x4F5C;&#x548C;&#x751F;&#x6D3B;&#x5C31;&#x662F;&apos;&#x529F;&#x80FD;&apos;&#x8981;<strong>&#x4E13;&#x4E00;</strong>)</p><pre data-role="codeBlock" data-info="bash" class="language-bash">usage: <span class="token function">git</span> checkout <span class="token punctuation">[</span><span class="token operator">&lt;</span>options<span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>branch<span class="token operator">&gt;</span>
+</pre><hr><h3>git checkout</h3><pre data-role="codeBlock" data-info="bash" class="language-bash">usage: <span class="token function">git</span> checkout <span class="token punctuation">[</span><span class="token operator">&lt;</span>options<span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>branch<span class="token operator">&gt;</span>
    or: <span class="token function">git</span> checkout <span class="token punctuation">[</span><span class="token operator">&lt;</span>options<span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>branch<span class="token operator">&gt;</span><span class="token punctuation">]</span> -- <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span><span class="token punctuation">..</span>.
 
     -q, --quiet           suppress progress reporting
