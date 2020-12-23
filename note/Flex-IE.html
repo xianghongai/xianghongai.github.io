@@ -7,7 +7,7 @@
     <meta name="author" content="山茶树和葡萄树/xianghongai@gmail.com" />
     <link rel="icon" type="image/png" href="https://xinlu.ink/favicon.png" />
     <link rel="shortcut icon" type="image/x-icon" href="https://xinlu.ink/favicon.ico" />
-    <title>Flex 布局</title>
+    <title>Flex 布局 (IE)</title>
     <script>
       /* Polyfill */
       // === ECMAScript
@@ -1317,12 +1317,44 @@
         if (ddEl && dlEl) {
           var key = dlEl.dataset.key;
           var value = ddEl.dataset.value;
+          var msKey = '';
 
           if (flexItemKey.includes(key)) {
             setFlexItemAttribute(key, value);
+            switch (key) {
+              case 'flex-grow':
+                msKey = '-ms-flex-positive';
+                break;
+              case 'flex-shrink':
+                msKey = '-ms-flex-negative';
+                break;
+              case 'flex-basis':
+                msKey = '-ms-flex-preferred-size';
+                break;
+              default:
+                msKey = '-ms-' + key;
+                break;
+            }
+            setFlexItemAttribute(msKey, value);
           }
 
           setFlexAttribute(key, value);
+          switch (key) {
+              case 'justify-content':
+                msKey = '-ms-flex-pack';
+                break;
+              case 'align-items':
+                msKey = '-ms-flex-align';
+                break;
+              case 'align-content':
+                msKey = '-ms-flex-line-pack';
+                break;
+              default:
+                msKey = '-ms-' + key;
+                break;
+            }
+            setFlexAttribute(msKey, value);
+
           setFlexItemResultSize();
         }
       }
