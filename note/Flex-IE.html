@@ -477,17 +477,6 @@
         }
       });
     </script>
-    <script>
-      var flexEl = document.querySelector('.flex');
-
-      function handlerFlexSize() {
-        var height = window.innerHeight;
-        flexEl.style.height = height + 'px';
-      }
-
-      handlerFlexSize();
-      window.addEventListener('resize', handlerFlexSize);
-    </script>
 
     <style>
       html {
@@ -998,6 +987,18 @@
     <!-- <script src="./polyfill-manual.js"></script> -->
     <!-- <script src="./core-js.min.js"></script> -->
     <!-- <script src="./polyfill-ie.js"></script> -->
+
+    <script>
+      var flexEl = document.querySelector('.flex');
+
+      function handlerFlexSize() {
+        var height = window.innerHeight;
+        flexEl.style.height = height + 'px';
+      }
+
+      handlerFlexSize();
+      window.addEventListener('resize', handlerFlexSize);
+    </script>
 
     <script>
       /**
