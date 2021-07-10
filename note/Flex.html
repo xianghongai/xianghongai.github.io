@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="keywords" content="Flex 布局, Flex Layout"><meta name="author" content="山茶树和葡萄树/xianghongai@gmail.com"><link rel="icon" type="image/png" href="https://xinlu.ink/favicon.png"><link rel="shortcut icon" type="image/x-icon" href="https://xinlu.ink/favicon.ico"><title>Flex 布局</title><style>html{height:100%}body{margin:0;height:auto;min-height:100%}.settings{display:flex;position:fixed;z-index:9;left:20px;padding:1em;background-color:rgba(255,255,255,.9);box-shadow:0 0 0 20px rgba(0,0,0,.05);border-radius:1em;touch-action:none;box-sizing:border-box}.list{display:flex}dl{margin-right:2em;flex:0 0 none}dd,dt{white-space:nowrap}dd{margin-left:0}.flex{display:flex;width:100%;min-height:100vh}.flex__item{position:relative;border-radius:8px}.flex__item p{margin:0}.style-1{background-color:#2bcbba}.style-2{background-color:#27ae60}.style-3{background-color:#9b59b6}.style-4{background-color:#3498db}.style-5{background-color:#f7b731}.flex__item:nth-child(5n+1){width:100px;height:100px;z-index:5}.flex__item:nth-child(5n+2){width:200px;height:200px;z-index:4}.flex__item:nth-child(5n+3){width:50px;height:50px;z-index:3}.flex__item:nth-child(5n+4){width:150px;height:150px;z-index:2}.flex__item:nth-child(5n+5){width:300px;height:300px;z-index:1}.origin,.origin-shadow,.result{white-space:nowrap;transform:scale(.8);transform-origin:left center}.origin,.result{position:absolute}.origin{bottom:1em}.operate{margin-left:.5em}.result{bottom:0}.origin-shadow{opacity:0}span[data-operate]{display:inline-block;width:24px;padding:.2em 0;margin-left:.5em;cursor:pointer;user-select:none;background-color:#eee;border-radius:5px;text-align:center}span[data-operate]:hover{background-color:#f2f2f2}.drag{position:absolute;border-radius:50%;touch-action:none;user-select:none;width:10px;height:10px;background-color:#fff;border:5px solid rgba(0,0,0,.075);transform:translate(-50%,-50%);cursor:move}.drag:hover{opacity:.6}.drag-top{top:0}.drag-middle{top:50%}.drag-bottom{top:100%}.drag-start{left:0}.drag-center{left:50%}.drag-end{left:100%}</style></head><body><section class="settings"><div><h3>flex container</h3><div class="list"><dl data-key="flex-direction"><dt>flex-direction:</dt><dd data-value="row"> <input type="radio" name="flexDirection" id="flexDirectionRow"> <label for="flexDirectionRow">row *</label></dd><dd data-value="column"> <input type="radio" name="flexDirection" id="flexDirectionColumn"> <label for="flexDirectionColumn">column</label></dd><dd data-value="row-reverse"> <input type="radio" name="flexDirection" id="flexDirectionRowReverse"> <label for="flexDirectionRowReverse">row-reverse</label></dd><dd data-value="column-reverse"> <input type="radio" name="flexDirection" id="flexDirectionColumnReverse"> <label for="flexDirectionColumnReverse">column-reverse</label></dd></dl><dl data-key="flex-wrap"><dt>flex-wrap:</dt><dd data-value="nowrap"> <input type="radio" name="flexWrap" id="flexWrapNowrap"> <label for="flexWrapNowrap">nowrap *</label></dd><dd data-value="wrap"> <input type="radio" name="flexWrap" id="flexWrapWrap"> <label for="flexWrapWrap">wrap</label></dd><dd data-value="wrap-reverse"> <input type="radio" name="flexWrap" id="flexWrapWrapReverse"> <label for="flexWrapWrapReverse">wrap-reverse</label></dd></dl><dl data-key="justify-content"><dt>justify-content:</dt><dd data-value="center"> <input type="radio" name="justifyContent" id="justifyContentCenter"> <label for="justifyContentCenter">center</label></dd><dd data-value="start"> <input type="radio" name="justifyContent" id="justifyContentStart"> <label for="justifyContentStart">start</label></dd><dd data-value="end"> <input type="radio" name="justifyContent" id="justifyContentEnd"> <label for="justifyContentEnd">end</label></dd><dd data-value="flex-start"> <input type="radio" name="justifyContent" id="justifyContentFlexStart"> <label for="justifyContentFlexStart">flex-start</label></dd><dd data-value="flex-end"> <input type="radio" name="justifyContent" id="justifyContentFlexEnd"> <label for="justifyContentFlexEnd">flex-end</label></dd><dd data-value="left"> <input type="radio" name="justifyContent" id="justifyContentLeft"> <label for="justifyContentLeft">left</label></dd><dd data-value="right"> <input type="radio" name="justifyContent" id="justifyContentRight"> <label for="justifyContentRight">right</label></dd><dd data-value="normal"> <input type="radio" name="justifyContent" id="justifyContentNormal"> <label for="justifyContentNormal">normal *</label></dd><dd data-value="space-between"> <input type="radio" name="justifyContent" id="justifyContentSpaceBetween"> <label for="justifyContentSpaceBetween">space-between</label></dd><dd data-value="space-around"> <input type="radio" name="justifyContent" id="justifyContentSpaceAround"> <label for="justifyContentSpaceAround">space-around</label></dd><dd data-value="space-evenly"> <input type="radio" name="justifyContent" id="justifyContentSpaceEvenly"> <label for="justifyContentSpaceEvenly">space-evenly</label></dd><dd data-value="stretch"> <input type="radio" name="justifyContent" id="justifyContentStretch"> <label for="justifyContentStretch">stretch</label></dd><dd data-value="safe center"> <input type="radio" name="justifyContent" id="justifyContentSafeCenter"> <label for="justifyContentSafeCenter">safe center</label></dd><dd data-value="unsafe center"> <input type="radio" name="justifyContent" id="justifyContentUnsafeCenter"> <label for="justifyContentUnsafeCenter">unsafe center</label></dd></dl><dl data-key="align-items"><dt>align-items:</dt><dd data-value="normal"> <input type="radio" name="alignItems" id="alignItemsNormal"> <label for="alignItemsNormal">normal *</label></dd><dd data-value="stretch"> <input type="radio" name="alignItems" id="alignItemsStretch"> <label for="alignItemsStretch">stretch</label></dd><dd data-value="center"> <input type="radio" name="alignItems" id="alignItemsCenter"> <label for="alignItemsCenter">center</label></dd><dd data-value="start"> <input type="radio" name="alignItems" id="alignItemsStart"> <label for="alignItemsStart">start</label></dd><dd data-value="end"> <input type="radio" name="alignItems" id="alignItemsEnd"> <label for="alignItemsEnd">end</label></dd><dd data-value="flex-start"> <input type="radio" name="alignItems" id="alignItemsFlexStart"> <label for="alignItemsFlexStart">flex-start</label></dd><dd data-value="flex-end"> <input type="radio" name="alignItems" id="alignItemsFlexEnd"> <label for="alignItemsFlexEnd">flex-end</label></dd><dd data-value="baseline"> <input type="radio" name="alignItems" id="alignItemsBaseline"> <label for="alignItemsBaseline">baseline</label></dd><dd data-value="first baseline"> <input type="radio" name="alignItems" id="alignItemsFirstBaseline"> <label for="alignItemsFirstBaseline">first baseline</label></dd><dd data-value="last baseline"> <input type="radio" name="alignItems" id="alignItemsLastBaseline"> <label for="alignItemsLastBaseline">last baseline</label></dd><dd data-value="safe center"> <input type="radio" name="alignItems" id="alignItemsSafeCenter"> <label for="alignItemsSafeCenter">safe center</label></dd><dd data-value="unsafe center"> <input type="radio" name="alignItems" id="alignItemsUnsafeCenter"> <label for="alignItemsUnsafeCenter">unsafe center</label></dd></dl><dl data-key="align-content"><dt>align-content:</dt><dd data-value="center"> <input type="radio" name="alignContent" id="alignContentCenter"> <label for="alignContentCenter">center</label></dd><dd data-value="start"> <input type="radio" name="alignContent" id="alignContentStart"> <label for="alignContentStart">start</label></dd><dd data-value="end"> <input type="radio" name="alignContent" id="alignContentEnd"> <label for="alignContentEnd">end</label></dd><dd data-value="flex-start"> <input type="radio" name="alignContent" id="alignContentFlexStart"> <label for="alignContentFlexStart">flex-start</label></dd><dd data-value="flex-end"> <input type="radio" name="alignContent" id="alignContentFlexEnd"> <label for="alignContentFlexEnd">flex-end</label></dd><dd data-value="normal"> <input type="radio" name="alignContent" id="alignContentNormal"> <label for="alignContentNormal">normal *</label></dd><dd data-value="baseline"> <input type="radio" name="alignContent" id="alignContentBaseline"> <label for="alignContentBaseline">baseline</label></dd><dd data-value="first baseline"> <input type="radio" name="alignContent" id="alignContentFirstBaseline"> <label for="alignContentFirstBaseline">first baseline</label></dd><dd data-value="last baseline"> <input type="radio" name="alignContent" id="alignContentLastBaseline"> <label for="alignContentLastBaseline">last baseline</label></dd><dd data-value="space-between"> <input type="radio" name="alignContent" id="alignContentSpaceBetween"> <label for="alignContentSpaceBetween">space-between</label></dd><dd data-value="space-around"> <input type="radio" name="alignContent" id="alignContentSpaceAround"> <label for="alignContentSpaceAround">space-around</label></dd><dd data-value="space-evenly"> <input type="radio" name="alignContent" id="alignContentSpaceEvenly"> <label for="alignContentSpaceEvenly">space-evenly</label></dd><dd data-value="stretch"> <input type="radio" name="alignContent" id="alignContentStretch"> <label for="alignContentStretch">stretch</label></dd><dd data-value="safe center"> <input type="radio" name="alignContent" id="alignContentSafeCenter"> <label for="alignContentSafeCenter">safe center</label></dd><dd data-value="unsafe center"> <input type="radio" name="alignContent" id="alignContentUnsafeCenter"> <label for="alignContentUnsafeCenter">unsafe center</label></dd></dl></div></div><div><header style="display:flex;align-items:center"><h3>flex item:</h3><div class="operate"><span data-operate="append">+</span> <span data-operate="remove">-</span></div></header><div class="list"><dl data-key="flex-grow"><dt>flex-grow:</dt><dd data-value="0"> <input type="radio" name="flexGrow" id="flexGrow0"> <label for="flexGrow0">0 *</label></dd><dd data-value="1"> <input type="radio" name="flexGrow" id="flexGrow1"> <label for="flexGrow1">1</label></dd><dd data-value="2"> <input type="radio" name="flexGrow" id="flexGrow2"> <label for="flexGrow2">2</label></dd><dd data-value="3"> <input type="radio" name="flexGrow" id="flexGrow3"> <label for="flexGrow3">3</label></dd></dl><dl data-key="flex-shrink"><dt>flex-shrink:</dt><dd data-value="0"> <input type="radio" name="flexShrink" id="flexShrink0"> <label for="flexShrink0">0</label></dd><dd data-value="1"> <input type="radio" name="flexShrink" id="flexShrink1"> <label for="flexShrink1">1 *</label></dd><dd data-value="2"> <input type="radio" name="flexShrink" id="flexShrink2"> <label for="flexShrink2">2</label></dd></dl><dl data-key="flex-basis"><dt>flex-basis:</dt><dd data-value="auto"> <input type="radio" name="flexBasis" id="flexBasisAuto"> <label for="flexBasisAuto">auto *</label></dd><dd data-value="fill"> <input type="radio" name="flexBasis" id="flexBasisFill"> <label for="flexBasisFill">fill</label></dd><dd data-value="max-content"> <input type="radio" name="flexBasis" id="flexBasisMaxContent"> <label for="flexBasisMaxContent">max-content</label></dd><dd data-value="min-content"> <input type="radio" name="flexBasis" id="flexBasisMinContent"> <label for="flexBasisMinContent">min-content</label></dd><dd data-value="fit-content"> <input type="radio" name="flexBasis" id="flexBasisFitContent"> <label for="flexBasisFitContent">fit-content</label></dd><dd data-value="content"> <input type="radio" name="flexBasis" id="flexBasisContent"> <label for="flexBasisContent">content</label></dd></dl><dl data-key="flex"><dt title="flex-grow flex-shrink flex-basis">flex:</dt><dd data-value="initial"> <input type="radio" name="flex" id="flexInitial"> <label for="flexInitial">initial (0, 1, auto) *</label></dd><dd data-value="auto"> <input type="radio" name="flex" id="flexAuto"> <label for="flexAuto">auto (1, 1, auto)</label></dd><dd data-value="none"> <input type="radio" name="flex" id="flexNone"> <label for="flexNone">none (0, 0, auto)</label></dd></dl></div></div><span data-drag class="drag drag-top drag-start"></span><span data-drag class="drag drag-top drag-center"></span><span data-drag class="drag drag-top drag-end"></span><span data-drag class="drag drag-middle drag-start"></span><span data-drag class="drag drag-middle drag-end"></span><span data-drag class="drag drag-bottom drag-start"></span><span data-drag class="drag drag-bottom drag-center"></span><span data-drag class="drag drag-bottom drag-end"></span></section><section class="flex"></section><script>
+      /**
+       * Get all of an element's parent elements up the DOM tree
+       *
+       * @param {Node} elem
+       * @param {String} selector
+       * @returns {Node}
+       */
+      const getParents = (elem, selector) => {
+        // Element.matches() polyfill
+        if (!Element.prototype.matches) {
+          Element.prototype.matches =
+            Element.prototype.matchesSelector ||
+            Element.prototype.mozMatchesSelector ||
+            Element.prototype.msMatchesSelector ||
+            Element.prototype.oMatchesSelector ||
+            Element.prototype.webkitMatchesSelector ||
+            function (s) {
+              const matches = (this.document || this.ownerDocument).querySelectorAll(s);
+              let i = matches.length;
+              while (--i >= 0 && matches.item(i) !== this) {}
+              return i > -1;
+            };
+        }
+
+        // Get the closest matching element
+        for (; elem && elem !== document; elem = elem.parentNode) {
+          if (elem.matches(selector)) return elem;
+        }
+        return null;
+      };
+
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+      }
+
+      const randomResult = [];
+
+      function getRandom() {
+        let num = getRandomIntInclusive(1, 5);
+
+        // 最近两次的结果不能相同
+        const temp = [randomResult[randomResult.length - 1], randomResult[randomResult.length - 2]];
+
+        if (randomResult.length && temp.includes(num)) {
+          return getRandom();
+        }
+
+        randomResult.push(num);
+
+        return num;
+      }
+
+      // 在 flex item 上设定的属性
+      const flexItemKey = ['flex-grow', 'flex-shrink', 'flex-basis', 'flex'];
+
+      const settingsEl = document.querySelector('.settings');
+      const radios = document.querySelectorAll('input[type="radio"]');
+      // 动态设置样式
+      const flexEl = document.querySelector('.flex');
+      const initCount = getRandomIntInclusive(3, 21);
+      let flexItemEl = null;
+
+      // 提示当前元素的尺寸
+      let flexItemEl1 = null;
+      let flexItemEl2 = null;
+      let flexItemEl3 = null;
+      let flexItemEl4 = null;
+      let flexItemEl5 = null;
+      let flexItems = null;
+
+      // 初始尺寸
+      const flexItemsSize = ['100*100', '200*200', '50*50', '150*150', '300*300'];
+
+      // 设定中属性有关联的元素
+      const flexGrow0El = document.querySelector('#flexGrow0');
+      const flexGrow1El = document.querySelector('#flexGrow1');
+      const flexShrink0El = document.querySelector('#flexShrink0');
+      const flexShrink1El = document.querySelector('#flexShrink1');
+      const flexBasisAutoEl = document.querySelector('#flexBasisAuto');
+      const flexInitialEl = document.querySelector('#flexInitial');
+      const flexAutoEl = document.querySelector('#flexAuto');
+      const flexNoneEl = document.querySelector('#flexNone');
+
+      // 获取元素，动态创建时需要重新调用
+      function getFlexItem() {
+        flexItemEl = document.querySelectorAll('.flex__item');
+
+        flexItemEl1 = document.querySelectorAll('.flex__item:nth-child(5n + 1)');
+        flexItemEl2 = document.querySelectorAll('.flex__item:nth-child(5n + 2)');
+        flexItemEl3 = document.querySelectorAll('.flex__item:nth-child(5n + 3)');
+        flexItemEl4 = document.querySelectorAll('.flex__item:nth-child(5n + 4)');
+        flexItemEl5 = document.querySelectorAll('.flex__item:nth-child(5n + 5)');
+
+        flexItems = [flexItemEl1, flexItemEl2, flexItemEl3, flexItemEl4, flexItemEl5];
+      }
+
+      // 创建 Flex Item
+      function createFlexItem() {
+        const length = flexItemEl?.length ?? 0;
+
+        const itemEl = document.createElement('div');
+        itemEl.classList.add('flex__item', `style-${getRandom()}`);
+
+        const indexEl = document.createElement('p');
+        indexEl.classList.add('index');
+        const indexText = document.createTextNode(length + 1);
+        itemEl.append(indexText);
+
+        const originEl = document.createElement('p');
+        originEl.classList.add('origin');
+
+        // 用来占位，用以 max/min-content 生效
+        const originShadowEl = document.createElement('p');
+        originShadowEl.classList.add('origin-shadow');
+
+        const resultEl = document.createElement('p');
+        resultEl.classList.add('result');
+
+        itemEl.append(indexEl);
+        itemEl.append(originEl);
+        itemEl.append(originShadowEl);
+        itemEl.append(resultEl);
+
+        flexEl.append(itemEl);
+      }
+
+      // 移除 Flex Item
+      function removeFlexItem() {
+        flexEl.removeChild(flexEl.lastChild);
+      }
+
+      // 原始尺寸
+      function flexItemOriginSize() {
+        flexItems.forEach((flexItemEls, flexItemIndex) => {
+          flexItemEls.forEach((flexItemEl) => {
+            const el = flexItemEl.querySelector('.origin');
+            const shadowEl = flexItemEl.querySelector('.origin-shadow');
+            const size = document.createTextNode(`origin: ${flexItemsSize[flexItemIndex]}`);
+
+            el.innerHTML = '';
+            el.append(size.cloneNode());
+            shadowEl.innerHTML = '';
+            shadowEl.append(size);
+          });
+        });
+      }
+
+      // 不同属性下的尺寸
+      function flexItemResultSize() {
+        flexItems.forEach((flexItemEls, flexItemIndex) => {
+          flexItemEls.forEach((flexItemEl) => {
+            const rect = flexItemEl.getBoundingClientRect();
+            const el = flexItemEl.querySelector('.result');
+            const size = document.createTextNode(`result: ${Math.ceil(rect.width)}*${Math.ceil(rect.height)}`);
+
+            el.innerHTML = '';
+            el.append(size);
+          });
+        });
+      }
+
+      // 在 Flex Item 上设定样式
+      function setFlexItemAttribute(key, value) {
+        if (key === 'flex') {
+          switch (value) {
+            case 'initial':
+              flexGrow0El.checked = true;
+              flexShrink1El.checked = true;
+              flexBasisAutoEl.checked = true;
+              break;
+            case 'auto':
+              flexGrow1El.checked = true;
+              flexShrink1El.checked = true;
+              flexBasisAutoEl.checked = true;
+              break;
+            default:
+              flexGrow0El.checked = true;
+              flexShrink0El.checked = true;
+              flexBasisAutoEl.checked = true;
+              break;
+          }
+        } else {
+          if (flexGrow0El.checked && flexShrink1El.checked && flexBasisAutoEl.checked) {
+            flexInitialEl.checked = true;
+          } else if (flexGrow1El.checked && flexShrink1El.checked && flexBasisAutoEl.checked) {
+            flexAutoEl.checked = true;
+          } else if (flexGrow0El.checked && flexShrink0El.checked && flexBasisAutoEl.checked) {
+            flexNoneEl.checked = true;
+          } else {
+            if (flexInitialEl.checked) {
+              flexInitialEl.checked = false;
+            }
+            if (flexAutoEl.checked) {
+              flexAutoEl.checked = false;
+            }
+            if (flexNoneEl.checked) {
+              flexNoneEl.checked = false;
+            }
+          }
+        }
+
+        flexItemEl.forEach((item) => {
+          item.style[key] = value;
+        });
+      }
+
+      // 在 Flex Container 上设定样式
+      function setFlexAttribute(key, value) {
+        flexEl.style[key] = value;
+      }
+
+      // 初始
+      function init(initCount) {
+        for (let i = 0; i < initCount; i++) {
+          createFlexItem();
+          getFlexItem();
+        }
+        flexItemOriginSize();
+        flexItemResultSize();
+      }
+
+      // 事件处理
+      function handler(event) {
+        // Label 触发会两次 Click 事件，跳过
+        if (event.target.nodeName === 'LABEL') {
+          return;
+        }
+
+        const operate = event.target.dataset.operate;
+
+        // 元素增删操作
+        if (operate) {
+          switch (operate) {
+            case 'append':
+              createFlexItem();
+              getFlexItem();
+              flexItemOriginSize();
+              flexItemResultSize();
+              break;
+            default:
+              removeFlexItem();
+              getFlexItem();
+              break;
+          }
+          return;
+        }
+
+        // 元素排版操作
+        const ddEl = getParents(event.target, 'dd');
+        const dlEl = getParents(event.target, 'dl');
+
+        if (ddEl && dlEl) {
+          const key = dlEl.dataset.key;
+          const value = ddEl.dataset.value;
+
+          if (flexItemKey.includes(key)) {
+            setFlexItemAttribute(key, value);
+          }
+
+          setFlexAttribute(key, value);
+
+          flexItemResultSize();
+        }
+      }
+
+      init(initCount);
+
+      // 事件监听
+      settingsEl.addEventListener('click', handler);
+
+      // 刷新时重置
+      window.addEventListener('beforeunload', () => {
+        radios.forEach((item) => {
+          item.checked = false;
+        });
+
+        flexEl.setAttribute('style', '');
+
+        flexItemEl.forEach((item) => {
+          item.setAttribute('style', '');
+        });
+      });
+    </script><script>
+      // 屏幕可用尺寸
+      const screenHeight = window.screen.availHeight;
+
+      const windowOuterHeight = window.outerHeight;
+      const windowInnerHeight = window.innerHeight;
+
+      const browserOuterHeight = windowOuterHeight - windowInnerHeight;
+
+      // 基于屏幕通用的区域
+      let availHeight = screenHeight - browserOuterHeight;
+
+      const rect = settingsEl.getBoundingClientRect();
+      const settingsHeight = Math.ceil(rect.height);
+
+      settingsEl.style.top = `${availHeight - settingsHeight - 40 - 32}px`;
+
+      // 拖动配置框
+      // [Create a Draggable Element in JavaScript | KIRUPA](https://www.kirupa.com/html5/drag.htm)
+      const container = document.querySelector('body');
+      let activeItem = null;
+      let active = false;
+
+      function dragStart(e) {
+        console.dir(e.target);
+        if (e.target.dataset.drag !== undefined) {
+          active = true;
+
+          // this is the item we are interacting with
+          activeItem = settingsEl;
+
+          if (activeItem !== null) {
+            if (!activeItem.xOffset) {
+              activeItem.xOffset = 0;
+            }
+
+            if (!activeItem.yOffset) {
+              activeItem.yOffset = 0;
+            }
+
+            if (e.type === 'touchstart') {
+              activeItem.initialX = e.touches[0].clientX - activeItem.xOffset;
+              activeItem.initialY = e.touches[0].clientY - activeItem.yOffset;
+            } else {
+              activeItem.initialX = e.clientX - activeItem.xOffset;
+              activeItem.initialY = e.clientY - activeItem.yOffset;
+            }
+          }
+        }
+      }
+
+      function dragEnd(e) {
+        if (activeItem !== null) {
+          activeItem.initialX = activeItem.currentX;
+          activeItem.initialY = activeItem.currentY;
+        }
+
+        active = false;
+        activeItem = null;
+      }
+
+      function drag(e) {
+        if (active) {
+          if (e.type === 'touchmove') {
+            e.preventDefault();
+
+            activeItem.currentX = e.touches[0].clientX - activeItem.initialX;
+            activeItem.currentY = e.touches[0].clientY - activeItem.initialY;
+          } else {
+            activeItem.currentX = e.clientX - activeItem.initialX;
+            activeItem.currentY = e.clientY - activeItem.initialY;
+          }
+
+          activeItem.xOffset = activeItem.currentX;
+          activeItem.yOffset = activeItem.currentY;
+
+          setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+        }
+      }
+
+      function setTranslate(xPos, yPos, el) {
+        el.style.transform = 'translate3d(' + xPos + 'px, ' + yPos + 'px, 0)';
+      }
+
+      container.addEventListener('touchstart', dragStart, false);
+      container.addEventListener('touchend', dragEnd, false);
+      container.addEventListener('touchmove', drag, false);
+
+      container.addEventListener('mousedown', dragStart, false);
+      container.addEventListener('mouseup', dragEnd, false);
+      container.addEventListener('mousemove', drag, false);
+    </script></body></html>

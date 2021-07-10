@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-cmn-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>灰度检测</title><style>body,html{height:100%}body{margin:0}.hide{display:none}.wrapper{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;display:flex;height:100%;background-color:#fff}.wrapper.active{z-index:2}.column{height:100%}.index{position:relative;display:block;font-size:12px;text-align:center;color:#ff1e00;text-shadow:1px 1px rgba(0,0,0,.3)}.gray-level-input{position:fixed;left:10px;bottom:10px;z-index:9}.gray-gradient{background-image:linear-gradient(90deg,#000,#fff)}.gray-block{flex-wrap:wrap;padding-right:5px;padding-left:5px}.gray-block .row{display:flex;width:100%;flex:none}.gray-block .column{margin:10px 5px}.switch{position:fixed;bottom:20px;left:50%;z-index:9;transform:translateX(-50%)}</style></head><body><div class="switch"> <input type="radio" name="switch" id="grayLevel" value="grayLevel" title="Level" data-type="level" checked="checked"> <input type="radio" name="switch" id="grayGradient" value="grayGradient" title="Gradient" data-type="gradient"> <input type="radio" name="switch" id="grayBlock" value="grayBlock" title="Block" data-type="block"></div> <input type="number" name="gray-level-input" class="gray-level-input" max="128" min="8" step="8" value="32"><div class="wrapper gray-level active" data-type="level"></div><div class="wrapper gray-gradient" data-type="gradient"></div><div class="wrapper gray-block" data-type="block"></div><script>
+      function handleChecked($radio) {
+        const $wrappers = document.querySelectorAll(".wrapper");
+        const $grayLevelInput = getGrayLevelInput();
+
+        $wrappers.forEach($wrapper => {
+          if ($wrapper.dataset.type === $radio.dataset.type) {
+            $wrapper.classList.add("active");
+          } else {
+            $wrapper.classList.remove("active");
+          }
+
+          if ($radio.dataset.type === "level") {
+            $grayLevelInput.classList.remove("hide");
+          } else {
+            $grayLevelInput.classList.add("hide");
+          }
+        });
+      }
+
+      function handleDefault() {
+        const $radios = document.querySelectorAll('input[name="switch"]');
+
+        $radios.forEach($radio => {
+          if ($radio.checked) {
+            handleChecked($radio);
+          }
+        });
+      }
+
+      function changeHandler() {
+        var $radio = event.target;
+        const name = $radio.name;
+
+        if (name !== "switch") return;
+
+        handleChecked($radio);
+      }
+
+      function handleSwitch() {
+        document.addEventListener("change", changeHandler, false);
+      }
+
+      function handleGrayLevel() {
+        const $wrapper = document.querySelector(".gray-level");
+        const $input = getGrayLevelInput();
+        const length = $input.value;
+        var $ele = "";
+
+        for (let index = length; index > 0; index--) {
+          let eleId = length - index + 1;
+
+          $ele += `
+            <section
+              class="column column-${eleId}"
+              style="width:${(1 / length) * 100}%; background-color:rgba(0, 0, 0, ${((100 / length) * index) / 100});">
+                <span class="index" style="top:${((length - index) / length) * 100}%">${eleId}</span>
+            </section>`;
+        }
+
+        $wrapper.innerHTML = $ele;
+      }
+
+      function handleGrayLevelInput() {
+        const $input = getGrayLevelInput();
+        $input.addEventListener("input", handleGrayLevel);
+        $input.addEventListener("keyup", handleGrayLevel);
+        $input.addEventListener("change", handleGrayLevel);
+      }
+
+      function handleGrayBlock() {
+        const $wrapper = document.querySelector(".gray-block");
+        var $ele = "";
+
+        let inner_height = window.innerHeight;
+
+        let row_lenght = 8;
+        let column_length = 256 / row_lenght;
+        let size = inner_height / row_lenght - 20;
+
+        for (let row_index = 0; row_index < row_lenght; row_index++) {
+          $ele += `<section class="row">`;
+          for (let column_index = 0; column_index < column_length; column_index++) {
+            let id = row_index * column_length + column_index;
+            $ele += `
+              <section
+                class="column"
+                style="width: ${size}px; height: ${size}px; background-color:rgb(${id}, ${id}, ${id});">
+                  <span class="index">${id}</span>
+              </section>`;
+          }
+          $ele += `</section>`;
+        }
+
+        $wrapper.innerHTML = $ele;
+      }
+
+      function getGrayLevelInput() {
+        return document.querySelector(".gray-level-input");
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        handleGrayLevel();
+        handleGrayLevelInput();
+        handleGrayBlock();
+        handleSwitch();
+        handleDefault();
+
+        $(window).on("resize", Test);
+      });
+
+      window.addEventListener('resize', function() {
+        handleGrayLevel();
+        handleGrayBlock();
+      }, true);
+
+      console.log("能识别到 253 吗?");
+    </script></body></html>
